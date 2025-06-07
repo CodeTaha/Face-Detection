@@ -9,7 +9,7 @@ if not webCam.isOpened():
     exit()
 
     cv2.namedWindow("Video", cv2.WINDOW_NORMAL)
-    cv2.resizeWindow("Video", 1280, 720)
+    cv2.resizeWindow("Video", 1600, 900)
 
 cikis = False
 fullscreen_toggle = False
@@ -18,7 +18,7 @@ while not cikis:
 
     if ret:
 
-        cam = cv2.resize(cam, (1280, 720))
+        cam = cv2.resize(cam, (1600, 900))
 
         cam = cv2.flip(cam, 1)
 
@@ -28,11 +28,10 @@ while not cikis:
         for (x, y, w, h) in font:
             cv2.rectangle(cam, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-        # print("Jumlah Wajah terdeksi: ", len(dafWajah))
         yazi = "Algilanan Yuz Sayisi = " + str(len(font))
 
         font = cv2.FONT_HERSHEY_SIMPLEX
-        cv2.putText(cam, yazi, (0, 30), font, 0.5, (255, 0, 0), 1)
+        cv2.putText(cam, yazi, (20, 30), font, 0.5, (255, 0, 0), 1)
 
         cv2.imshow("Video", cam)
         if cv2.waitKey(1) & 0xFF == ord('q'):
